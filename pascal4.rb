@@ -33,5 +33,12 @@ print " "}
 end
 end
 pas=Pasc.new
-pas.triangle(6)
+pas.triangle(1)
 
+class Test_< Test::Unit::TestCase
+    def test_pasc
+        {
+assert_equal([1],Pasc.new.triangle(1))
+}
+end
+end
