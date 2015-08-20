@@ -10,12 +10,12 @@ class Version
 	  def versionchange()
 		   
 		   @file_names1.each do |file_name|
-		     
-		     text = File.read(file_name)
-		     cnt = /(#{@section}.*\{\s.*\s.*\s.*\s.*\s.*\s.*(versionCode\s.*?=(.*)\s.*?(versionName\s=)(.*)))/.match (text)
-		  
+		   text = File.read(file_name)
+		   
+          cntt = /((#{@section}.*\s.*(versionCode\s.*?(.*)\s.*?(versionName\s=?)(.*))))/.match (text)
+             
 		     File.open(@file_names1[0], 'w') do |out_file|
-		      out_file.print text.gsub(/#{$2}/,"\n\t\s\s\s\sversionName = \"#{@version_nm}\"\n\t\s\s\sversioncode = #{@version_cd}")
+		      out_file.print text.gsub(/#{$3}/,"\n\t\s\s\s\sversionName = \"#{@version_nm}\"\n\t\s\s\sversioncode = #{@version_cd}")
 		     
 		     end
 		   end
@@ -23,7 +23,9 @@ class Version
 
 end
 
-v = Version.new(['build.gradle'],"DEV",412,"NEWAND")
+v = Version.new(['build1.gradle'],"DEV",512,"NEWAND")
 v.versionchange()
+
+
 
 
