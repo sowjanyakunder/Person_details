@@ -9,14 +9,13 @@ class Version
 
 	  def versionchange()
 		   
-		   @file_names1.each do |file_name|
-		   text = File.read(file_name)
+		     @file_names1.each do |file_name|
+		     text = File.read(file_name)
 		   
-          cntt = /((#{@section}.*\s.*(versionCode\s.*?(.*)\s.*?(versionName\s=?)(.*))))/.match (text)
+             cntt = /((#{@section}.*\s.*(versionCode\s.*?(.*)\s.*?(versionName\s=?)(.*))))/.match (text)
              
 		     File.open(@file_names1[0], 'w') do |out_file|
 		      out_file.print text.gsub(/#{$3}/,"\n\t\s\s\s\sversionName = \"#{@version_nm}\"\n\t\s\s\sversioncode = #{@version_cd}")
-		     
 		     end
 		   end
 	   end
