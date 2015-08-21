@@ -2,7 +2,7 @@ class Node
 
     attr_accessor :value, :next_node
 
-    def initialize val,next_node
+    def initialize val
         @value = val
         @next_node = next_node
         puts  value.to_s 
@@ -12,7 +12,7 @@ end
 class LinkedList
 
     def initialize val
-        @head = Node.new(val,nil)
+        @head = Node.new(val)
     end
     
     def add(val)
@@ -20,7 +20,7 @@ class LinkedList
         while current.next_node != nil
             current = current.next_node
         end 
-        current.next_node = Node.new(val,nil)
+        current.next_node = Node.new(val)
         self    
     end
 
@@ -42,16 +42,19 @@ class LinkedList
     
     def search(val)
     
-        current1 = @head
-         if current1.value == val
+        current = @head
+         if current.value == val
              print val
+
              puts " present in List"
          end
              full_list2 = [] 
-        while current1.next_node != nil 
-            full_list2 += [current1.value.to_s]
-            current1 = current1.next_node
-            if current1.value == val
+        while current.next_node != nil 
+            full_list2 << [current.value.to_s]
+            current = current.next_node
+            print full_list2.index('val')
+            if current.value == val
+                
                 print val
                 puts " present in List"
             
@@ -65,7 +68,7 @@ class LinkedList
         current = @head
         full_list = [] 
         while current.next_node != nil 
-            full_list += [current.value.to_s]
+            full_list << [current.value.to_s]
             current = current.next_node
         end
         full_list += [current.value.to_s]
@@ -89,4 +92,4 @@ list.display
 
 print"\n"
 
-list.search(12)
+list.search(13)
