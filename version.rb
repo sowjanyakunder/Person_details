@@ -35,7 +35,7 @@ class Version
 
 		     end
 
-		 end
+		     end
 		   end
 	   end
 
